@@ -6,7 +6,7 @@ import com.example.cleanapplication.network.Failure
 data class EffectWrapperAction(val effect: Effect) : Action
 
 interface RepositoryAction : Action {
-    data class Search(val query: String?) : RepositoryAction
+    data class Search(val query: String) : RepositoryAction
 }
 
 interface RepositoryEffect : Effect {

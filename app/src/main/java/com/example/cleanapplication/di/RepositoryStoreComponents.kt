@@ -22,9 +22,9 @@ class RepositoryActor constructor(private val scope: CoroutineScope, private val
         }
     }
 
-    private suspend fun ProducerScope<Effect>.handleSearch(query: String?) {
+    private suspend fun ProducerScope<Effect>.handleSearch(query: String) {
         send(RepositoryEffect.StartLoading(query))
-        api.searchRepositories().exec().unseal<RepositoryListModel> {
+        api.searchRepositories(query).exec().unseal<RepositoryListModel> {
             send(RepositoryEffect.ErrorLoading(it))
         }?.let {
             send(RepositoryEffect.SuccessLoading(it))

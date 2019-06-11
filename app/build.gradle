@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -15,6 +17,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        all {
+            buildConfigField("String", "BASE_API_URL", "\" https://api.github.com\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -34,6 +39,7 @@ ext {
     junit_version = '4.12'
     test_runner_version = '1.0.2'
     espresso_version = '3.0.2'
+    dagger_verions = '2.22.1'
 }
 
 dependencies {
@@ -51,4 +57,8 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Dagger 2
+    implementation "com.google.dagger:dagger:$dagger_verions"
+    kapt "com.google.dagger:dagger-compiler:$dagger_verions"
 }

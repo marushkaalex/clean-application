@@ -1,7 +1,6 @@
 package com.example.cleanapplication.mvi
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel
@@ -29,7 +28,9 @@ open class BaseStore<State, Action, Effect, News>(
             if (newState != state) {
                 state = newState
                 stateChannel.send(state)
-                newsPublisher(wish, effect, newState)
+                newsPublisher(wish, effect, newState)?.let {
+                    newsChannel.send(it)
+                }
             }
         }
     }
