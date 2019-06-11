@@ -18,7 +18,7 @@ interface Fail {
 
 interface News
 
-typealias Actor<State, Action, Effect> = suspend (state: State, action: Action) -> ReceiveChannel<Effect>
-typealias Reducer<State, Effect> = suspend (state: State, action: Effect) -> State
+typealias Actor<State, Action, Effect> = (state: State, action: Action) -> ReceiveChannel<Effect>
+typealias Reducer<State, Effect> = (state: State, action: Effect) -> State
 typealias NewsPublisher<State, Action, Effect, News> = (action: Action, effect: Effect, state: State) -> News?
 typealias Middleware<In, Out> = (`in`: In) -> Out

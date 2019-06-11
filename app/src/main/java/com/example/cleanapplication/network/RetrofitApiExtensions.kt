@@ -28,7 +28,7 @@ suspend fun <T> Call<T>.exec() = suspendCancellableCoroutine<Response> { continu
 }
 
 @Suppress("UNCHECKED_CAST")
-fun <T> Response.unseal(errorHandler: (failure: Failure) -> Unit): T? {
+suspend fun <T> Response.unseal(errorHandler: suspend (failure: Failure) -> Unit): T? {
     return when (this) {
         is Success<*> -> { this.data as? T }
         is Failure -> {

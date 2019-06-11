@@ -1,7 +1,7 @@
 package com.example.cleanapplication.mvi
 
 
-//interface IFeature<Wish : Any, State : Any, News : Any> : IStore<Wish, State>, Disposable {
+//interface IFeature<Wish : Any, MainState : Any, News : Any> : IStore<Wish, MainState>, Disposable {
 //
 //    val news: ObservableSource<News>
 //}

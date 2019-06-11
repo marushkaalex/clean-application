@@ -3,10 +3,7 @@ package com.example.cleanapplication.mvi
 import com.example.cleanapplication.model.RepositoryListModel
 import com.example.cleanapplication.network.Failure
 
-interface CounterAction : Action {
-    object IncreaseCounter : CounterAction
-    object RefreshCounter : CounterAction
-}
+data class EffectWrapperAction(val effect: Effect) : Action
 
 interface RepositoryAction : Action {
     data class Search(val query: String?) : RepositoryAction
