@@ -1,5 +1,6 @@
 package com.example.cleanapplication.mvi
 
+import com.example.cleanapplication.ui.activity.ScopedActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
 

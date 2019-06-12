@@ -1,4 +1,4 @@
-package com.example.cleanapplication.mvi
+package com.example.cleanapplication.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope

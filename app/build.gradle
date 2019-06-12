@@ -25,6 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 androidExtensions {
@@ -40,6 +43,7 @@ ext {
     test_runner_version = '1.0.2'
     espresso_version = '3.0.2'
     dagger_verions = '2.22.1'
+    arch_lifecycle_extensions_version = '1.1.1'
 }
 
 dependencies {
@@ -61,4 +65,9 @@ dependencies {
     // Dagger 2
     implementation "com.google.dagger:dagger:$dagger_verions"
     kapt "com.google.dagger:dagger-compiler:$dagger_verions"
+
+    // Life cycle handling and retained view models
+    implementation("android.arch.lifecycle:extensions:$arch_lifecycle_extensions_version") {
+        exclude group: 'com.android.support'
+    }
 }
