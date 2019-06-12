@@ -29,6 +29,7 @@ class RepositoryActor constructor(private val scope: CoroutineScope, private val
         }?.let {
             send(RepositoryEffect.SuccessLoading(it))
         }
+        close()
     }
 }
 
