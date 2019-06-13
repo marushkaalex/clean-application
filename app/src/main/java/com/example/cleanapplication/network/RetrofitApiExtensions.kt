@@ -12,9 +12,14 @@ data class Success<T>(val data: T) : Response()
 
 sealed class Failure : Response()
 
-class Exception(val exception: Exception) : Failure()
+class Exception(val exception: java.lang.Exception) : Failure()
 
 class Error(val data: ResponseBody?) : Failure()
+
+fun Failure.getMessage(): String = when (this) {
+    is Exception -> exception.message ?: "Exception without message"
+    is Error -> data?.string() ?: "Error without message"
+}
 
 @ExperimentalCoroutinesApi
 suspend fun <T> Call<T>.exec() = suspendCancellableCoroutine<Response> { continuation ->

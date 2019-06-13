@@ -51,6 +51,4 @@ class ReduxModule {
         reducer = reducerProvider.getReducer(),
         newsPublisher = newsPublisherProvider.getNewsPublisher()
     )
-
-
 }
