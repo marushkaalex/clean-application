@@ -1,5 +1,6 @@
-package com.example.cleanapplication.di
+package com.example.cleanapplication.di.module
 
+import com.example.cleanapplication.di.interaction.IBuildConfigInteractor
 import com.example.cleanapplication.network.IApi
 import dagger.Module
 import dagger.Provides

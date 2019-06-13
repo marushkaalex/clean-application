@@ -1,4 +1,4 @@
-package com.example.cleanapplication.di
+package com.example.cleanapplication.di.interaction
 
 interface IBuildConfigInteractor {
 

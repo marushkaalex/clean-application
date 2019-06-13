@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.cleanapplication.BR
 import com.example.cleanapplication.ui.BaseDaggerFragment
 import javax.inject.Inject
 
@@ -24,8 +25,8 @@ abstract class ViewModelFragment<VM : ViewModel, Binding : ViewDataBinding> :
         val vm = ViewModelProviders.of(this, viewModelFactory)[viewModelClass]
         val binding = DataBindingUtil.inflate<Binding>(inflater, layoutId, container, false)
         configure(vm, binding)
+        binding.setVariable(BR.viewModel, vm)
         binding.lifecycleOwner = this
-        // todo set var
         binding.executePendingBindings()
         return binding.root
     }

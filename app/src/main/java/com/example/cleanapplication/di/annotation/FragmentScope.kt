@@ -1,4 +1,4 @@
-package com.example.cleanapplication.di.scopes
+package com.example.cleanapplication.di.annotation
 
 import javax.inject.Scope
 

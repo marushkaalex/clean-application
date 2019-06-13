@@ -33,7 +33,7 @@ class RepositoryActor constructor(private val scope: CoroutineScope, private val
     }
 }
 
-class RepositoryReducer constructor() : Reducer<MainState, Effect> {
+class RepositoryReducer : Reducer<MainState, Effect> {
     override fun invoke(state: MainState, action: Effect): MainState = when (action) {
         is RepositoryEffect.StartLoading -> state.copy(
             repositoriesState = state.repositoriesState.copy(
@@ -43,7 +43,8 @@ class RepositoryReducer constructor() : Reducer<MainState, Effect> {
         )
         is RepositoryEffect.SuccessLoading -> state.copy(
             repositoriesState = state.repositoriesState.copy(
-                repositories = action.data
+                repositories = action.data,
+                status = RepositoriesStatus.SHOW_DATA
             )
         )
         is RepositoryEffect.ErrorLoading -> state.copy(repositoriesState = state.repositoriesState.copy(status = RepositoriesStatus.ERROR))
@@ -51,7 +52,7 @@ class RepositoryReducer constructor() : Reducer<MainState, Effect> {
     }
 }
 
-class RepositoryNewsPublisher constructor() : NewsPublisher<MainState, Action, Effect, News> {
+class RepositoryNewsPublisher : NewsPublisher<MainState, Action, Effect, News> {
     override fun invoke(action: Action, effect: Effect, state: MainState): News? {
         return if (effect is RepositoryEffect.ErrorLoading) RepositoryNews.ErrorLoading(effect.error) else null
     }

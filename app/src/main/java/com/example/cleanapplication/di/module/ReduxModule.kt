@@ -1,22 +1,29 @@
-package com.example.cleanapplication.di
+package com.example.cleanapplication.di.module
 
 import com.example.cleanapplication.MainActivity
+import com.example.cleanapplication.di.*
+import com.example.cleanapplication.di.interaction.IActorProvider
+import com.example.cleanapplication.di.interaction.INewPublisherProvider
+import com.example.cleanapplication.di.interaction.IReducerProvider
 import com.example.cleanapplication.mvi.*
 import com.example.cleanapplication.network.IApi
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@Module // todo @ActivityScope
+@Module
 class ReduxModule {
 
     @Provides
     fun provideCoroutineScope(activity: MainActivity): CoroutineScope = activity
 
+    @ExperimentalCoroutinesApi
     @Provides
     fun provideActor(scope: CoroutineScope, api: IApi): IActorProvider<MainState, Action, Effect> =
         object : IActorProvider<MainState, Action, Effect> {
-            override fun getActor(): Actor<MainState, Action, Effect> = RepositoryActor(scope, api)
+            override fun getActor(): Actor<MainState, Action, Effect> =
+                RepositoryActor(scope, api)
         }
 
     @Provides
@@ -29,7 +36,8 @@ class ReduxModule {
     @Provides
     fun provideNewsPublisher(): INewPublisherProvider<MainState, Action, Effect, News> =
         object : INewPublisherProvider<MainState, Action, Effect, News> {
-            override fun getNewsPublisher(): NewsPublisher<MainState, Action, Effect, News> = RepositoryNewsPublisher()
+            override fun getNewsPublisher(): NewsPublisher<MainState, Action, Effect, News> =
+                RepositoryNewsPublisher()
         }
 
     @Provides

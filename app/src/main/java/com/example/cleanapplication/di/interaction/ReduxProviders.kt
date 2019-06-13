@@ -1,4 +1,4 @@
-package com.example.cleanapplication.di
+package com.example.cleanapplication.di.interaction
 
 import com.example.cleanapplication.mvi.Actor
 import com.example.cleanapplication.mvi.NewsPublisher
