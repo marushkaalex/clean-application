@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [ReduxModule::class, NetworkModule::class, NetworkModule::class, ConstantsModule::class, ViewModelModule::class])
-interface MainActivityComponent : IActivityComponent {
+interface MainActivityComponent : IActivityComponent<MainActivity> {
 
     @Component.Factory
     interface Factory {
@@ -19,6 +19,6 @@ interface MainActivityComponent : IActivityComponent {
     }
 }
 
-interface IActivityComponent : Injector<Activity> {
+interface IActivityComponent<T : Activity> : Injector<T> {
     fun fragmentViewModelFactory(): ViewModelProvider.Factory
 }

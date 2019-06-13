@@ -10,7 +10,7 @@ import com.example.cleanapplication.ui.activity.ScopedActivity
 abstract class BaseDaggerActivity : ScopedActivity() {
 
     abstract fun getInjector(): Injector<in Activity>
-    abstract var component: IActivityComponent
+    abstract var component: IActivityComponent<*>
         protected set
 
     override fun onCreate(savedInstanceState: Bundle?) {

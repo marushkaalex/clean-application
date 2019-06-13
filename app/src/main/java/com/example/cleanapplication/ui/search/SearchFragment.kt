@@ -25,7 +25,7 @@ class SearchFragment : ViewModelFragment<SearchFragmentViewModel, com.example.cl
     @Inject
     lateinit var test: String
 
-    override fun getInjector(activityComponent: IActivityComponent): Injector<Fragment> = DaggerSearchFragmentComponent.builder().iActivityComponent(activityComponent).build().cast()
+    override fun getInjector(activityComponent: IActivityComponent<*>): Injector<Fragment> = DaggerSearchFragmentComponent.builder().iActivityComponent(activityComponent).build().cast()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

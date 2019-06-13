@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 class MainActivity : BaseDaggerActivity() {
 
-    override var component: IActivityComponent = DaggerMainActivityComponent.factory().create(this)
+    override var component: IActivityComponent<*> = DaggerMainActivityComponent.factory().create(this)
+
     override fun getInjector(): Injector<in Activity> = component.cast()
 
     @Inject
