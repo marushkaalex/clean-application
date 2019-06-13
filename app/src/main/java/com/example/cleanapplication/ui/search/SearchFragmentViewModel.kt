@@ -2,19 +2,21 @@ package com.example.cleanapplication.ui.search
 
 import android.arch.lifecycle.MutableLiveData
 import com.example.cleanapplication.di.interaction.IToaster
-import com.example.cleanapplication.util.cancelJob
 import com.example.cleanapplication.mvi.MainStore
 import com.example.cleanapplication.mvi.RepositoriesStatus
 import com.example.cleanapplication.mvi.RepositoryAction
 import com.example.cleanapplication.mvi.RepositoryNews
 import com.example.cleanapplication.network.getMessage
 import com.example.cleanapplication.ui.vm.ScopedViewModel
+import com.example.cleanapplication.util.cancelJob
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.consumeEach
 import javax.inject.Inject
 
 @ObsoleteCoroutinesApi
-class SearchFragmentViewModel @Inject constructor(
+@ExperimentalCoroutinesApi
+class SearchFragmentViewModel
+@Inject constructor(
     private val store: MainStore,
     private val toaster: IToaster
 ) : ScopedViewModel() {

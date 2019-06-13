@@ -1,12 +1,17 @@
 package com.example.cleanapplication.di.module
 
 import com.example.cleanapplication.MainActivity
-import com.example.cleanapplication.di.*
+import com.example.cleanapplication.di.RepositoryActor
+import com.example.cleanapplication.di.RepositoryNewsPublisher
+import com.example.cleanapplication.di.RepositoryReducer
 import com.example.cleanapplication.di.interaction.IActorProvider
 import com.example.cleanapplication.di.interaction.INewPublisherProvider
 import com.example.cleanapplication.di.interaction.IReducerProvider
 import com.example.cleanapplication.mvi.*
 import com.example.cleanapplication.network.IApi
+import com.example.mvicore.Actor
+import com.example.mvicore.NewsPublisher
+import com.example.mvicore.Reducer
 import dagger.Module
 import dagger.Provides
 import kotlinx.coroutines.CoroutineScope
@@ -40,6 +45,7 @@ class ReduxModule {
                 RepositoryNewsPublisher()
         }
 
+    @ExperimentalCoroutinesApi
     @Provides
     fun provideMainStore(
         actorProvider: IActorProvider<MainState, Action, Effect>,

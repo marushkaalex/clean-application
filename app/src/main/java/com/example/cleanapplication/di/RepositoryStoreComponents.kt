@@ -5,6 +5,9 @@ import com.example.cleanapplication.mvi.*
 import com.example.cleanapplication.network.IApi
 import com.example.cleanapplication.network.exec
 import com.example.cleanapplication.network.unseal
+import com.example.mvicore.Actor
+import com.example.mvicore.NewsPublisher
+import com.example.mvicore.Reducer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.ProducerScope
@@ -52,7 +55,8 @@ class RepositoryReducer : Reducer<MainState, Effect> {
     }
 }
 
-class RepositoryNewsPublisher : NewsPublisher<MainState, Action, Effect, News> {
+class RepositoryNewsPublisher :
+    NewsPublisher<MainState, Action, Effect, News> {
     override fun invoke(action: Action, effect: Effect, state: MainState): News? {
         return if (effect is RepositoryEffect.ErrorLoading) RepositoryNews.ErrorLoading(effect.error) else null
     }

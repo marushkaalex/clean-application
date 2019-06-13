@@ -1,8 +1,8 @@
 package com.example.cleanapplication.di.interaction
 
-import com.example.cleanapplication.mvi.Actor
-import com.example.cleanapplication.mvi.NewsPublisher
-import com.example.cleanapplication.mvi.Reducer
+import com.example.mvicore.Actor
+import com.example.mvicore.NewsPublisher
+import com.example.mvicore.Reducer
 
 interface IActorProvider<State, Action, Effect> {
     fun getActor(): Actor<State, Action, Effect>

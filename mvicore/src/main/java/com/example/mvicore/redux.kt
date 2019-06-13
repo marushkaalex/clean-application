@@ -1,6 +1,5 @@
-package com.example.cleanapplication.mvi
+package com.example.mvicore
 
-import com.example.cleanapplication.network.Failure
 import kotlinx.coroutines.channels.ReceiveChannel
 
 interface IStore<Wish, State, News> {
@@ -9,14 +8,6 @@ interface IStore<Wish, State, News> {
     fun openNewsSubscription(): ReceiveChannel<News>
     suspend fun dispatch(wish: Wish)
 }
-
-interface Action
-interface Effect
-interface Fail {
-    val error: Failure?
-}
-
-interface News
 
 typealias Actor<State, Action, Effect> = (state: State, action: Action) -> ReceiveChannel<Effect>
 typealias Reducer<State, Effect> = (state: State, action: Effect) -> State

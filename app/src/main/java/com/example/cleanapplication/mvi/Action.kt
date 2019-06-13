@@ -11,10 +11,19 @@ interface RepositoryAction : Action {
 
 interface RepositoryEffect : Effect {
     data class StartLoading(val query: String?) : RepositoryEffect
-    data class ErrorLoading(override val error: Failure) : RepositoryEffect, Fail
+    data class ErrorLoading(override val error: Failure) : RepositoryEffect,
+        Fail
     data class SuccessLoading(val data: RepositoryListModel) : RepositoryEffect
 }
 
 interface RepositoryNews : News {
     data class ErrorLoading(override val error: Failure) : RepositoryNews, Fail
 }
+
+interface Action
+interface Effect
+interface Fail {
+    val error: Failure?
+}
+
+interface News

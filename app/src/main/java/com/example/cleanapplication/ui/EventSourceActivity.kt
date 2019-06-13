@@ -1,4 +1,4 @@
-package com.example.cleanapplication.mvi
+package com.example.cleanapplication.ui
 
 import com.example.cleanapplication.ui.activity.ScopedActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.example.cleanapplication.mvi
+package com.example.mvicore
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
