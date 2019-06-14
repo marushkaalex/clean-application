@@ -1,6 +1,6 @@
 package com.example.cleanapplication.di.interaction
 
-import android.support.annotation.UiThread
+import androidx.annotation.UiThread
 
 interface IToaster {
 

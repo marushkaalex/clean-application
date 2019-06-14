@@ -14,7 +14,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         all {
@@ -43,7 +43,7 @@ ext {
     coroutines_version = '1.2.1'
     appcompat_version = '28.0.0'
     constraint_layout_version = '1.1.3'
-    junit_version = '4.12'
+    junit_version = '1.1.1'
     test_runner_version = '1.0.2'
     espresso_version = '3.0.2'
     dagger_verions = '2.22.1'
@@ -56,11 +56,11 @@ dependencies {
     implementation project(':viewcore')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$appcompat_version"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "com.android.support.test:runner:$test_runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
@@ -76,10 +76,10 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_verions"
 
     // Life cycle handling and retained view models
-    implementation("android.arch.lifecycle:extensions:$arch_lifecycle_extensions_version") {
+    implementation('androidx.lifecycle:lifecycle-extensions:2.0.0') {
         exclude group: 'com.android.support'
     }
 
-    implementation "com.android.support:recyclerview-v7:$appcompat_version"
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 }

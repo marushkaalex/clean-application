@@ -1,14 +1,18 @@
 package com.example.cleanapplication.di.module
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.cleanapplication.di.FragmentViewModelFactory
 import com.example.cleanapplication.di.annotation.ViewModelKey
 import com.example.cleanapplication.ui.search.SearchFragmentViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 
+@ExperimentalCoroutinesApi
+@ObsoleteCoroutinesApi
 @Module
 abstract class ViewModelModule {
 

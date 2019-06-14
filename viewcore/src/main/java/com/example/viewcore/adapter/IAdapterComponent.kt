@@ -1,7 +1,7 @@
 package com.example.viewcore.adapter
 
-import android.databinding.ViewDataBinding
-import android.support.annotation.LayoutRes
+import androidx.databinding.ViewDataBinding
+import androidx.annotation.LayoutRes
 
 interface IAdapterComponent<in Binding : ViewDataBinding, in Data : Any> {
 
@@ -12,4 +12,5 @@ interface IAdapterComponent<in Binding : ViewDataBinding, in Data : Any> {
     fun onRecycle(binding: Binding) {}
 }
 
+@Suppress("UNCHECKED_CAST")
 fun IAdapterComponent<*, *>.cast() = this as IAdapterComponent<ViewDataBinding, Any>

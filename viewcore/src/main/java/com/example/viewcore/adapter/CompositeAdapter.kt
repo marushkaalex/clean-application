@@ -1,12 +1,12 @@
 package com.example.viewcore.adapter
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
-import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.collection.ArrayMap
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 
 class CompositeAdapter : RecyclerView.Adapter<CompositeAdapter.ViewHolder>() {
 

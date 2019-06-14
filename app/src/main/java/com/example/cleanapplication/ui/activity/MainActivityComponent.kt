@@ -1,14 +1,18 @@
 package com.example.cleanapplication.ui.activity
 
 import android.app.Activity
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider
 import com.example.cleanapplication.MainActivity
 import com.example.cleanapplication.di.interaction.Injector
 import com.example.cleanapplication.di.module.*
 import dagger.BindsInstance
 import dagger.Component
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import javax.inject.Singleton
 
+@ObsoleteCoroutinesApi
+@ExperimentalCoroutinesApi
 @Singleton
 @Component(
     modules = [ReduxModule::class, NetworkModule::class, NetworkModule::class,

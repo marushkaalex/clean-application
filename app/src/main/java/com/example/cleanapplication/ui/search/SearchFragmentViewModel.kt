@@ -1,7 +1,7 @@
 package com.example.cleanapplication.ui.search
 
-import android.databinding.ObservableArrayList
-import android.databinding.ObservableBoolean
+import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableBoolean
 import com.example.cleanapplication.di.interaction.IToaster
 import com.example.cleanapplication.mvi.MainStore
 import com.example.cleanapplication.mvi.RepositoriesStatus

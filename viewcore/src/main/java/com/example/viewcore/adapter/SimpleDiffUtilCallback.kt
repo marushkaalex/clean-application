@@ -1,6 +1,6 @@
 package com.example.viewcore.adapter
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 
 open class SimpleDiffUtilCallback(private val oldData: List<Any>, private val newData: List<Any>) :
     DiffUtil.Callback() {

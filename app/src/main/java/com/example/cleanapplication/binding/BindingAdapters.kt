@@ -1,9 +1,9 @@
 package com.example.cleanapplication.binding
 
-import android.databinding.BindingAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.example.viewcore.adapter.CompositeAdapter
 import com.example.viewcore.adapter.SimpleDiffUtilCallback
 
