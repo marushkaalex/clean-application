@@ -1,10 +1,12 @@
 package com.example.cleanapplication.di.module
 
+import com.example.cleanapplication.BuildConfig
 import com.example.cleanapplication.di.interaction.IBuildConfigInteractor
 import com.example.cleanapplication.network.IApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -14,7 +16,13 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient = OkHttpClient()
+    fun provideHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .apply {
+            if (BuildConfig.DEBUG) {
+                addInterceptor(HttpLoggingInterceptor().also { it.level = HttpLoggingInterceptor.Level.BASIC })
+            }
+        }
+        .build()
 
     @Provides
     @Singleton

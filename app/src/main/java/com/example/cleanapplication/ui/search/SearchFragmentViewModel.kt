@@ -1,6 +1,7 @@
 package com.example.cleanapplication.ui.search
 
 import android.arch.lifecycle.MutableLiveData
+import android.databinding.ObservableArrayList
 import com.example.cleanapplication.di.interaction.IToaster
 import com.example.cleanapplication.mvi.MainStore
 import com.example.cleanapplication.mvi.RepositoriesStatus
@@ -21,19 +22,28 @@ class SearchFragmentViewModel
     private val toaster: IToaster
 ) : ScopedViewModel() {
 
-    val results = MutableLiveData<String>()
-
+    val items = ObservableArrayList<Any>()
     private var searchJob: Job? = null
 
     init {
         launch {
             store.openStateSubscription().consumeEach {
-                results.postValue(when (it.repositoriesState.status) {
-                    RepositoriesStatus.LOADING -> "Loading..."
-                    RepositoriesStatus.SHOW_DATA -> it.repositoriesState.repositories.items.joinToString { repo -> repo.name }
-                    RepositoriesStatus.INIT -> "Init"
-                    RepositoriesStatus.ERROR -> "Error"
-                })
+//                results.postValue(when (it.repositoriesState.status) {
+//                    RepositoriesStatus.LOADING -> "Loading..."
+//                    RepositoriesStatus.SHOW_DATA -> it.repositoriesState.repositories.items.joinToString { repo -> repo.name }
+//                    RepositoriesStatus.INIT -> "Init"
+//                    RepositoriesStatus.ERROR -> "Error"
+//                })
+                when (it.repositoriesState.status) {
+//                    RepositoriesStatus.LOADING -> "Loading..."
+                    RepositoriesStatus.SHOW_DATA -> {
+                        println("kek lala: ${it.repositoriesState.repositories.items}")
+                        items.clear()
+                        items.addAll(it.repositoriesState.repositories.items)
+                    }
+//                    RepositoriesStatus.INIT -> "Init"
+//                    RepositoriesStatus.ERROR -> "Error"
+                }
             }
         }
         launch {

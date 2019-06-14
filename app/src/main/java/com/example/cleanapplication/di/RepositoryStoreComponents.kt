@@ -50,7 +50,13 @@ class RepositoryReducer : Reducer<MainState, Effect> {
                 status = RepositoriesStatus.SHOW_DATA
             )
         )
-        is RepositoryEffect.ErrorLoading -> state.copy(repositoriesState = state.repositoriesState.copy(status = RepositoriesStatus.ERROR))
+        is RepositoryEffect.ErrorLoading -> {
+            if (state.repositoriesState.status != RepositoriesStatus.SHOW_DATA) state.copy(
+                repositoriesState = state.repositoriesState.copy(
+                    status = RepositoriesStatus.ERROR
+                )
+            ) else state
+        }
         else -> state
     }
 }
