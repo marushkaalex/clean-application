@@ -1,7 +1,7 @@
 package com.example.cleanapplication.ui.search
 
-import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableArrayList
+import android.databinding.ObservableBoolean
 import com.example.cleanapplication.di.interaction.IToaster
 import com.example.cleanapplication.mvi.MainStore
 import com.example.cleanapplication.mvi.RepositoriesStatus
@@ -23,27 +23,21 @@ class SearchFragmentViewModel
 ) : ScopedViewModel() {
 
     val items = ObservableArrayList<Any>()
+    val isInProgress = ObservableBoolean(false)
     private var searchJob: Job? = null
 
     init {
         launch {
             store.openStateSubscription().consumeEach {
-//                results.postValue(when (it.repositoriesState.status) {
-//                    RepositoriesStatus.LOADING -> "Loading..."
-//                    RepositoriesStatus.SHOW_DATA -> it.repositoriesState.repositories.items.joinToString { repo -> repo.name }
-//                    RepositoriesStatus.INIT -> "Init"
-//                    RepositoriesStatus.ERROR -> "Error"
-//                })
                 when (it.repositoriesState.status) {
-//                    RepositoriesStatus.LOADING -> "Loading..."
                     RepositoriesStatus.SHOW_DATA -> {
-                        println("kek lala: ${it.repositoriesState.repositories.items}")
                         items.clear()
                         items.addAll(it.repositoriesState.repositories.items)
                     }
-//                    RepositoriesStatus.INIT -> "Init"
-//                    RepositoriesStatus.ERROR -> "Error"
+                    else -> {
+                    }
                 }
+                isInProgress.set(it.repositoriesState.status == RepositoriesStatus.LOADING)
             }
         }
         launch {
